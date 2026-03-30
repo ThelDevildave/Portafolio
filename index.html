@@ -145,7 +145,7 @@ header {
 
 .proyectos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 20px;
 }
@@ -164,12 +164,15 @@ img {
 @media (max-width: 768px) {
 
     .proyectos {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+    }
+
+    body {
         padding: 10px;
     }
 
     .card {
-        padding: 8px;
+        margin-bottom: 15px;
     }
 
     header {
@@ -177,25 +180,11 @@ img {
     }
 
     h1 {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     p {
         font-size: 14px;
-    }
-
-    .carousel button {
-        font-size: 20px;
-        padding: 8px;
-    }
-
-    .modal-btn {
-        font-size: 30px;
-        padding: 8px;
-    }
-
-    .close {
-        font-size: 30px;
     }
 }
 
