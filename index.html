@@ -7,10 +7,47 @@
 
 <style>
 body {
-    font-family: 'Trebuchet MS';
-    margin: 0;
-    background: #111;
+     font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+body {
+    background: #0d0d0d; color: #eaeaea;
+}
+
+h3 {
+    margin-top: 10px;
+    font-weight: 600;
+
+}
+
+
+.card h3 {
     color: white;
+}
+
+p {
+    color: #ffffff;
+}
+
+.proyectos {
+    gap: 30px;
+    padding: 40px;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+header p {
+    color: #aaa;
+    max-width: 600px;
+    margin: 10px auto;
+}
+
+.carousel img {
+    border-radius: 12px;
 }
 
 .carousel {
@@ -58,13 +95,13 @@ body {
 }
 
 /* HOVER IMAGEN */
-.img-container {
-    position: relative;
-    overflow: hidden;
+.img-container img {
+    filter: grayscale(20%);
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
-.img-container img {
-    transition: transform 0.3s ease;
+.img-container:hover img {
+    filter: grayscale(0%);
 }
 
 .img-container:hover img {
@@ -111,7 +148,7 @@ body {
     top: 20px;
     right: 30px;
     font-size: 40px;
-    color: white;
+    color: rgb(110, 43, 43);
     cursor: pointer;
 }
 
@@ -151,9 +188,17 @@ header {
 }
 
 .card {
-    background: #222;
-    padding: 10px;
-    border-radius: 10px;
+    border: 1px solid #222;
+    background: #1a1a1a;
+    padding: 12px;
+    border-radius: 12px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
 }
 
 img {
@@ -172,6 +217,7 @@ img {
     }
 
     .card {
+    border: 1px solid #222;
         margin-bottom: 15px;
     }
 
@@ -188,6 +234,94 @@ img {
     }
 }
 
+.contacto {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.contacto-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 8px 12px;
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.contacto-btn:hover {
+    background: #222;
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+.info h2 {
+    margin-bottom: 10px;
+}
+
+.info p {
+    
+    line-height: 1.6;
+}
+
+.info ul {
+    
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    .info {
+        grid-template-columns: 1fr;
+    }
+}
+
+.info div {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.4);
+}
+
+.info h2 {
+    color: rgb(254, 254, 254);
+}
+
+
+
+
+.info p,
+.info ul {
+    color: #bbb;
+}
+
+.info div {
+    transition: transform 0.3s ease;
+}
+
+.info div:hover {
+    transform: translateY(-5px);
+}
+
+
+h2 {
+    font-weight: 500;
+    letter-spacing: 1px;
+}
 </style>
 </head>
 
@@ -196,7 +330,85 @@ img {
 <header>
     <h1>David Garcia</h1>
     <p>Especialista en documentación ejecutiva BIM | Revit + Dynamo | Arquitectura y construcción</p>
+
+   <div class="contacto">
+
+    <a href="mailto:dgm.0212@gmail.com?subject=Solicitud%20de%20proyecto%20BIM&body=Hola%20David,%20vi%20tu%20portafolio%20y%20me%20gustaria%20cotizar%20un%20proyecto."
+       class="contacto-btn">
+
+        <!-- ICONO CORREO -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+            <path d="M2 4h20v16H2V4zm10 9L4 6h16l-8 7z"/>
+        </svg>
+
+        Correo
+    </a>
+
+    <a href="https://wa.me/5215542512395?text=Hola%20David,%20vi%20tu%20portafolio%20y%20me%20interesa%20un%20proyecto"
+       target="_blank"
+       class="contacto-btn">
+
+        <!-- ICONO WHATSAPP -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+            <path d="M20 4.5A11.8 11.8 0 0012.1 1C6 1 1 6 1 12.1c0 2 .5 3.9 1.4 5.6L1 23l5.5-1.4A11.8 11.8 0 0012.1 23C18 23 23 18 23 12.1c0-3.1-1.2-6-3-7.6zM12.1 21c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.3.8.9-3.2-.2-.4A9.9 9.9 0 012.1 12c0-5.5 4.5-10 10-10S22 6.5 22 12s-4.4 9-9.9 9zm5.3-6.8c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1s-.8 1-.9 1.1c-.2.1-.3.2-.6.1-.3-.1-1.3-.5-2.5-1.6-.9-.8-1.5-1.7-1.7-2-.2-.3 0-.4.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5 0-.1-.7-1.7-1-2.3-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.7.3-.2.2-1 1-.9 2.3.1 1.3 1 2.6 1.2 2.8.2.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.8.6.8.3 1.5.2 2.1.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"/>
+        </svg>
+
+        WhatsApp
+    </a>
+    
+<a href="https://www.linkedin.com/in/david-garcia-689a9b216/" 
+   target="_blank"
+   class="contacto-btn">
+
+    <!-- ICONO LINKEDIN -->
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8h4V24h-4V8zm7.5 0h3.6v2.2h.05c.5-.95 1.7-2.2 3.5-2.2 3.75 0 4.45 2.47 4.45 5.68V24h-4v-8.5c0-2.02-.03-4.62-2.82-4.62-2.82 0-3.25 2.2-3.25 4.47V24h-4V8z"/>
+    </svg>
+
+    LinkedIn
+</a>
+
+</div>
+<p>
+Disponible para proyectos freelance
+</p>
 </header>
+<section style="padding:20px;">
+    <h2>Sobre mi</h2>
+    <ul>
+        <p>
+            Arquitecto especializado en documentación ejecutiva BIM con experiencia en proyectos retail.
+        Trabajo principalmente con Revit y Dynamo, optimizando procesos y generando planos listos para construcción.
+        He participado en el desarrollo de proyecto bajo estándares internacionales, incluyendo documentación para proyectos Retail tipo Walmart.
+        </p>
+    </ul>
+<section class="info">
+
+    <div class="sobre-mi">
+        <h2>Servicios</h2>
+        <ul>
+    <li>✔ Modelado BIM en Revit</li>
+    <li>✔ Planos ejecutivos para construcción</li>
+    <li>✔ Automatización con Dynamo</li>
+    <li>✔ Coordinación de modelos</li>
+        </ul>
+    </div>
+
+    <div class="habilidades">
+        <h2>Habilidades</h2>
+        <ul>
+            <li>Revit (Modelado BIM)</li>
+            <li>Documentación ejecutiva</li>
+            <li>Dynamo (automatización)</li>
+            <li>AutoCAD</li>
+            <li>Representación arquitectónica</li>
+        </ul>
+    </div>
+
+</section>
+
+</section>
+
 
 <section class="proyectos">
 
@@ -233,7 +445,7 @@ img {
         <button onclick="nextSlide(this)">→</button>
     </div>
 
-    <h3>Museo Cultural Prehispánico</h3>
+    <h3>Museo Cultural Prehispánico | Proyecto BIM</h3>
     <p>Proyecto conceptual de museo prehispánico enfocado en la
          reinterpretación de espacios ceremoniales mediante 
         geometrías contemporáneas. Modelado en Revit con énfasis en documentación BIM.</p>
@@ -252,14 +464,14 @@ img {
             <button onclick="nextSlide(this)">→</button>
         </div>
 
-        <h3>Wallmart Expres</h3>
+        <h3>Walmart Express | Documentación Retail BIM</h3>
         <p>Proyecto Retail desarrollado para Walmart.</p>
     </div>
 
     <!-- Proyecto 3 -->
     <div class="card">
         <img src="Sioc BA.png">
-        <h3>Proyecto Arquitectonico Bodega Aurrera</h3>
+        <h3>Bodega Aurrera | Desarrollo de Proyecto Arquitectonico</h3>
         <p>Desarrollo preliminar para Bodega Aurrera.</p>
     </div>
 
@@ -334,6 +546,9 @@ function prevSlide(btn) {
     let prev = (current - 1 + images.length) % images.length;
     images[prev].classList.add("active");
 }
+
+
+
 </script>
 
 </body>
