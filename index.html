@@ -349,18 +349,49 @@ img {
         padding: 10px;
     }
 
+    .info {
+        grid-template-columns: 1fr !important; /* 👈 ESTO ES CLAVE */
+        padding: 20px;
+    }
+
+    .featured {
+        grid-column: span 1 !important; /* 👈 evita que se rompa */
+    }
+
+
+}
+
+@media (max-width: 768px) {
+
+    header {
+        text-align: center;
+        padding: 30px 15px;
+    }
+
+    section {
+        text-align: center;
+    }
+
+    .info div {
+        text-align: center;
+    }
+
+    ul {
+        padding-left: 0;
+        list-style-position: inside;
+    }
+
+}
+@media (max-width: 768px) {
+
     .card {
-        width: 100%;
+        padding: 15px;
     }
 
-    .card h3 {
-        font-size: 18px;
+    .carousel {
+        height: auto; /* 👈 evita deformaciones */
     }
 
-    .card p {
-        font-size: 14px;
-        line-height: 1.6;
-    }
 }
 
 .info div {
@@ -592,7 +623,7 @@ Si tu equipo necesita apoyo con documentación BIM profesional o mejorar su fluj
     <div class="carousel">
         <button onclick="prevSlide(this)">←</button>
 
-        
+
          <div class="img-container">
             <img src="Museo 8.png" class="active" onclick="openModal(this)">
             <span class="zoom-icon">🔍+</span>
@@ -637,12 +668,11 @@ Si tu equipo necesita apoyo con documentación BIM profesional o mejorar su fluj
 
         <div class="dots"></div>
     </div>
-
     <h3>Museo Cultural Prehispánico | Proyecto BIM</h3>
     <p>Proyecto conceptual de museo prehispánico enfocado en la
          reinterpretación de espacios ceremoniales mediante 
         geometrías contemporáneas. Modelado en Revit con énfasis en documentación BIM.</p>
-</div>
+    </div>
 
  <!-- Proyecto 2 -->
     <div class="card">
