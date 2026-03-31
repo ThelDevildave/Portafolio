@@ -47,7 +47,7 @@ header p {
 }
 
 .carousel img {
-    border-radius: 12px;
+    border-radius: 24px;
 }
 
 .carousel {
@@ -58,6 +58,8 @@ header p {
 .carousel img {
     display: none;
     width: 100%;
+    height: auto;
+    object-fit: contain;
     border-radius: 10px;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -92,6 +94,34 @@ header p {
 
 .carousel button:hover {
     background: rgba(0,0,0,0.6);
+}
+
+/*puntos carousel*/ 
+.dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: inline-flex;
+    gap: 6px;
+
+    background: rgba(0, 0, 0, 0.4); /* 👈 fondo */
+    padding: 6px 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px); /* 👈 efecto pro */
+}
+.dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 3px;
+    background: #777;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: white;
 }
 
 /* HOVER IMAGEN */
@@ -173,6 +203,39 @@ header p {
 .modal-btn.right {
     right: 20px;
 }
+.modal-dots {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 4px;
+    background: #777;
+    border-radius: 50%;
+}
+.modal-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: inline-flex;
+    gap: 8px;
+
+    background: rgba(0,0,0,0.4);
+    padding: 8px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+.modal-dot.active {
+    background: white;
+}
+
 
 /* LAYOUT */
 header {
@@ -203,7 +266,8 @@ header {
 
 img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -317,6 +381,10 @@ img {
     transform: translateY(-5px);
 }
 
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
 
 h2 {
     font-weight: 500;
@@ -324,6 +392,19 @@ h2 {
 }
 </style>
 </head>
+
+
+<script>
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+</script>
+<script>
+document.querySelectorAll("img").forEach(img => {
+    img.setAttribute("draggable", "false");
+});
+</script>
+
 
 <body>
 
@@ -375,13 +456,32 @@ Disponible para proyectos freelance
 </header>
 <section style="padding:20px;">
     <h2>Sobre mi</h2>
-    <ul>
-        <p>
-            Arquitecto especializado en documentación ejecutiva BIM con experiencia en proyectos retail.
-        Trabajo principalmente con Revit y Dynamo, optimizando procesos y generando planos listos para construcción.
-        He participado en el desarrollo de proyecto bajo estándares internacionales, incluyendo documentación para proyectos Retail tipo Walmart.
-        </p>
-    </ul>
+    <p>
+He participado en el desarrollo de proyectos bajo estándares internacionales, incluyendo documentación para proyectos retail tipo Walmart.
+</p>
+
+<p>
+Ayudo a despachos y empresas a:
+</p>
+
+<ul>
+    <li>Desarrollar planos ejecutivos listos para construcción</li>
+    <li>Reducir errores en documentación</li>
+    <li>Optimizar procesos de entrega</li>
+    <li>Migrar de CAD a BIM de forma eficiente</li>
+</ul>
+
+<p>
+Trabajo directamente sobre proyectos reales, asegurando resultados aplicables en obra.
+</p>
+
+<p>
+Utilizo Dynamo para automatizar procesos y mejorar la eficiencia en tareas repetitivas.
+</p>
+
+<p>
+Si tu equipo necesita apoyo con documentación BIM profesional o mejorar su flujo de trabajo, puedo ayudarte.
+</p>
 <section class="info">
 
     <div class="sobre-mi">
@@ -417,8 +517,24 @@ Disponible para proyectos freelance
     <div class="carousel">
         <button onclick="prevSlide(this)">←</button>
 
+        
+         <div class="img-container">
+            <img src="Museo 8.png" class="active" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="museo 6.png" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="museo 7.png" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
         <div class="img-container">
-            <img src="Museo 5.jpg" class="active" onclick="openModal(this)">
+            <img src="Museo 5.jpg" onclick="openModal(this)">
             <span class="zoom-icon">🔍+</span>
         </div>
 
@@ -443,6 +559,8 @@ Disponible para proyectos freelance
         </div>
 
         <button onclick="nextSlide(this)">→</button>
+
+        <div class="dots"></div>
     </div>
 
     <h3>Museo Cultural Prehispánico | Proyecto BIM</h3>
@@ -461,11 +579,38 @@ Disponible para proyectos freelance
             <span class="zoom-icon">🔍+</span>
         </div> 
 
+          <div class="img-container">
+            <img src="00-CROQUIS DE LOCALIZACIÓN-7040.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div> 
+
+          <div class="img-container">
+            <img src="C03-PLANO DE CONJUNTO-7040.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div> 
+
+          <div class="img-container">
+            <img src="C14d-PLANO DE PICKUP SEÑALIZACIÓN-7040.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div> 
+
+          <div class="img-container">
+            <img src="A101-PLANTA DE MERCANCÍAS-7040.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div> 
+
+          <div class="img-container">
+            <img src="A100d-PLANO DE ALBAÑILERIA-7040.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div> 
+
             <button onclick="nextSlide(this)">→</button>
+            <div class="dots"></div>
         </div>
 
         <h3>Walmart Express | Documentación Retail BIM</h3>
         <p>Proyecto Retail desarrollado para Walmart.</p>
+        
     </div>
 
     <!-- Proyecto 3 -->
@@ -480,8 +625,14 @@ Disponible para proyectos freelance
 <!-- MODAL -->
 <div class="modal" id="modal">
     <span class="close" onclick="closeModal()">×</span>
+
     <button class="modal-btn left" onclick="prevModal()">←</button>
+    
     <img id="modal-img">
+
+    <!-- 👇 PUNTOS -->
+    <div class="modal-dots"></div>
+
     <button class="modal-btn right" onclick="nextModal()">→</button>
 </div>
 
@@ -499,6 +650,7 @@ function openModal(img) {
 
     modal.style.display = "flex";
     modalImg.src = img.src;
+    createModalDots();
 }
 
 function closeModal() {
@@ -508,11 +660,13 @@ function closeModal() {
 function nextModal() {
     currentIndex = (currentIndex + 1) % currentImages.length;
     document.getElementById("modal-img").src = currentImages[currentIndex].src;
+    updateModalDots();
 }
 
 function prevModal() {
     currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
     document.getElementById("modal-img").src = currentImages[currentIndex].src;
+    updateModalDots();
 }
 
 function nextSlide(btn) {
@@ -529,6 +683,8 @@ function nextSlide(btn) {
 
     let next = (current + 1) % images.length;
     images[next].classList.add("active");
+
+    updateDots(carousel); // ✅ al final
 }
 
 function prevSlide(btn) {
@@ -545,6 +701,71 @@ function prevSlide(btn) {
 
     let prev = (current - 1 + images.length) % images.length;
     images[prev].classList.add("active");
+
+    updateDots(carousel); // ✅ al final
+}
+
+
+/* script puntos*/ 
+function createDots(carousel) {
+    let images = carousel.querySelectorAll("img");
+    let dotsContainer = carousel.querySelector(".dots");
+
+    dotsContainer.innerHTML = "";
+
+    images.forEach((_, index) => {
+        let dot = document.createElement("span");
+        dot.classList.add("dot");
+
+        if (index === 0) dot.classList.add("active");
+
+        dotsContainer.appendChild(dot);
+    });
+}
+
+function updateDots(carousel) {
+    let images = carousel.querySelectorAll("img");
+    let dots = carousel.querySelectorAll(".dot");
+
+    images.forEach((img, index) => {
+        if (img.classList.contains("active")) {
+            dots.forEach(d => d.classList.remove("active"));
+            dots[index].classList.add("active");
+        }
+    });
+}
+
+document.querySelectorAll(".carousel").forEach(carousel => {
+    createDots(carousel);
+}); 
+
+/*dots modal*/
+
+function createModalDots() {
+    let container = document.querySelector(".modal-dots");
+    container.innerHTML = "";
+
+    currentImages.forEach((_, index) => {
+        let dot = document.createElement("span");
+        dot.classList.add("modal-dot");
+
+        if (index === currentIndex) {
+            dot.classList.add("active");
+        }
+
+        container.appendChild(dot);
+    });
+}
+
+function updateModalDots() {
+    let dots = document.querySelectorAll(".modal-dot");
+
+    dots.forEach((dot, index) => {
+        dot.classList.remove("active");
+        if (index === currentIndex) {
+            dot.classList.add("active");
+        }
+    });
 }
 
 
