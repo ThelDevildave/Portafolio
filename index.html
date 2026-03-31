@@ -368,8 +368,23 @@ img {
 }
 
 @media (max-width: 768px) {
+    .proyectos {
+        grid-template-columns: 1fr !important;
+    }
+
     .featured {
         grid-column: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel {
+        height: auto; /* 👈 quita altura fija */
+    }
+
+    .carousel img {
+        height: auto;
+        object-fit: cover; /* 👈 mejor para mobile */
     }
 }
 
