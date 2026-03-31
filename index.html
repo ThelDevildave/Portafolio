@@ -52,6 +52,11 @@ header p {
 
 .carousel {
     position: relative;
+    height: 250px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* IMÁGENES */
@@ -259,6 +264,21 @@ header {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    margin-top: 10px;
+    line-height: 1.3;
+}
+
+.card p {
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 10px 25px rgba(0,0,0,0.5);
@@ -348,8 +368,8 @@ img {
 }
 
 @media (max-width: 768px) {
-    .info {
-        grid-template-columns: 1fr;
+    .featured {
+        grid-column: span 1;
     }
 }
 
@@ -390,26 +410,90 @@ h2 {
     font-weight: 500;
     letter-spacing: 1px;
 }
+#topBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: 1px solid #444;
+
+    padding: 10px 14px;
+    font-size: 18px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    display: none;
+
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#topBtn:hover {
+    background: #222;
+}
+
+
+.footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #222;
+    color: #777;
+    font-size: 13px;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    margin: 0 10px;
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.featured {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured .carousel {
+    background: #111;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+.featured .carousel {
+    height: 350px;
+    margin-bottom: 15px;
+}
+.featured .carousel {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 👈 IMPORTANTE */
+}
+
 </style>
 </head>
 
-
-<script>
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
-</script>
-<script>
-document.querySelectorAll("img").forEach(img => {
-    img.setAttribute("draggable", "false");
-});
-</script>
-
-
+<button id="topBtn" onclick="scrollToTop()">↑</button>
 <body>
 
 <header>
-    <h1>David Garcia</h1>
+    <h1>David García Martínez</h1>
     <p>Especialista en documentación ejecutiva BIM | Revit + Dynamo | Arquitectura y construcción</p>
 
    <div class="contacto">
@@ -491,6 +575,7 @@ Si tu equipo necesita apoyo con documentación BIM profesional o mejorar su fluj
     <li>✔ Planos ejecutivos para construcción</li>
     <li>✔ Automatización con Dynamo</li>
     <li>✔ Coordinación de modelos</li>
+    <li>✔ Capacitacion tecnica en desarrollo bim</li>
         </ul>
     </div>
 
@@ -513,7 +598,7 @@ Si tu equipo necesita apoyo con documentación BIM profesional o mejorar su fluj
 <section class="proyectos">
 
 <!-- PROYECTO 1 -->
-<div class="card">
+<div class="card featured">
     <div class="carousel">
         <button onclick="prevSlide(this)">←</button>
 
@@ -609,18 +694,220 @@ Si tu equipo necesita apoyo con documentación BIM profesional o mejorar su fluj
         </div>
 
         <h3>Walmart Express | Documentación Retail BIM</h3>
-        <p>Proyecto Retail desarrollado para Walmart.</p>
-        
-    </div>
+        <p>Desarrollo de documentación ejecutiva para proyecto retail tipo Walmart, siguiendo estándares internacionales.
 
+        Incluye planos arquitectónicos, coordinación de información y preparación de 
+        entregables listos para construcción dentro de entorno BIM.</p>
+        
+</div>
     <!-- Proyecto 3 -->
     <div class="card">
-        <img src="Sioc BA.png">
+        <div class="carousel">
+        <button onclick="prevSlide(this)">←</button>
+
+        
+         <div class="img-container">
+            <img src="0.jpg" class="active" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="1.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="2.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="3.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="4.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="5.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="6.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="7.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <button onclick="nextSlide(this)">→</button>
+
+        <div class="dots"></div>
+    </div>
+        
+        <h3>Co-living| Documentacion BIM</h3>
+        <p>Desarrollo de planos arquitectónicos (plantas y cortes) para proyecto de vivienda tipo co-living.
+
+        Trabajo enfocado en claridad constructiva, organización espacial y 
+        documentación lista para ejecución, 
+        utilizando Revit como herramienta principal.</p>
+    </div>
+
+    <!-- Proyecto 4 -->
+    <div class="card">
+        <div class="carousel">
+        <button onclick="prevSlide(this)">←</button>
+
+        
+         <div class="img-container">
+            <img src="BA-0.jpg" class="active" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="BA-01.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="BA-02.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="BA-03.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="BA-04.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="BA-05.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="BA-06.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <button onclick="nextSlide(this)">→</button>
+
+        <div class="dots"></div>
+    </div>
+        
         <h3>Bodega Aurrera | Desarrollo de Proyecto Arquitectonico</h3>
         <p>Desarrollo preliminar para Bodega Aurrera.</p>
     </div>
 
+    <!-- Proyecto 5 -->
+    <div class="card">
+
+  <div class="carousel">
+        <button onclick="prevSlide(this)">←</button>
+
+        
+         <div class="img-container">
+            <img src="revit (1).png" class="active" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="revit (2).png" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="revit (3).png" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="revit (4).png" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="revit (5).png" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+        <button onclick="nextSlide(this)">→</button>
+
+        <div class="dots"></div>
+    </div>
+        <h3>Enseñanza|Capacitación BIM</h3>
+        <p>Capacitación técnica en herramientas BIM (Revit) a estudiantes e ingenieros en Estados Unidos.
+
+        Enfoque en modelado, documentación ejecutiva y optimización de flujos de trabajo, adaptando el 
+        contenido a necesidades reales de la industria.</p>
+    </div>
+
+    <!-- Proyecto 6 -->
+    <div class="card">
+        <div class="carousel">
+        <button onclick="prevSlide(this)">←</button>
+
+         <div class="img-container">
+            <img src="IH-0.jpg" class="active" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="IH-1.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+         <div class="img-container">
+            <img src="IH-2.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="IH-3.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="IH-4.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+
+        <div class="img-container">
+            <img src="IH-5.jpg" onclick="openModal(this)">
+            <span class="zoom-icon">🔍+</span>
+        </div>
+        <button onclick="nextSlide(this)">→</button>
+
+        <div class="dots"></div>
+       
+    </div>
+ <h3>Documentacion y Desarrollo MEP </h3>
+        <p>Desarrollo preliminar para Bodega Aurrera.</p>
 </section>
+
+
+
+<footer class="footer">
+    <p>© 2026 David García Martínez — Arquitectura & BIM</p>
+
+    <div class="footer-links">
+        <a href="mailto:dgm.0212@gmail.com">Correo</a>
+        <a href="https://wa.me/5215542512395" target="_blank">WhatsApp</a>
+        <a href="https://www.linkedin.com/in/david-garcia-689a9b216/" target="_blank">LinkedIn</a>
+    </div>
+</footer>
+
+
+
 
 <!-- MODAL -->
 <div class="modal" id="modal">
@@ -636,6 +923,36 @@ Si tu equipo necesita apoyo con documentación BIM profesional o mejorar su fluj
     <button class="modal-btn right" onclick="nextModal()">→</button>
 </div>
 
+
+
+<script>
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+</script>
+<script>
+document.querySelectorAll("img").forEach(img => {
+    img.setAttribute("draggable", "false");
+});
+</script>
+<script>
+window.onscroll = function() {
+    let btn = document.getElementById("topBtn");
+
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        btn.style.display = "block";
+    } else {
+        btn.style.display = "none";
+    }
+};
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+</script>
 <script>
 let currentImages = [];
 let currentIndex = 0;
@@ -769,8 +1086,6 @@ function updateModalDots() {
 }
 
 
-
 </script>
-
 </body>
 </html>
